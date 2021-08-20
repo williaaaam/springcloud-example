@@ -1,5 +1,6 @@
 package com.example.springcloud.openfeign;
 
+import com.example.springcloud.openfeign.config.OpenFeignConfig;
 import com.example.springcloud.openfeign.service.GitHubService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,6 +19,9 @@ class ApplicationTests {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @Autowired
+    private OpenFeignConfig openFeignConfig;
+
     @DisplayName("测试GithubService")
     @Test
     public void githubService() {
@@ -34,6 +38,13 @@ class ApplicationTests {
         // com.example.springcloud.openfeign.service.GitHubService
         System.out.println(applicationContext.getBean("githubServiceClient.FeignClientSpecification"));
         System.out.println(applicationContext.getBean("com.example.springcloud.openfeign.service.GitHubService"));
+    }
+
+
+    @Test
+    public void openFeignConfig() {
+        // OpenFeignConfig只被@Configuration注解，则使用CGLIB代理生成子类，对目标方法进行增强
+        System.out.println(openFeignConfig);
     }
 
 }
