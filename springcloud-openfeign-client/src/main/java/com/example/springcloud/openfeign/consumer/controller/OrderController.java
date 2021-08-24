@@ -1,6 +1,6 @@
 package com.example.springcloud.openfeign.consumer.controller;
 
-import com.example.springcloud.openfeign.consumer.service.OrderService;
+import com.example.springcloud.openfeign.consumer.service.OrderClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +18,7 @@ public class OrderController {
 
 
     @Autowired
-    private OrderService orderService;
+    private OrderClient orderService;
 
     @GetMapping("order/get")
     public String getOrder() {

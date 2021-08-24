@@ -18,6 +18,7 @@ feign:
     connection-timeout: 2000
     max-connections: 200
   hystrix:
+    # 开启hystrix熔断功能
     enabled: true
   # 压缩配置
   compression:
@@ -57,6 +58,7 @@ hystrix:
       execution:
         isolation:
           thread:
+            # 让Hystrix的超时时间改为10秒
             timeoutinMilliseconds: 10000
 
 

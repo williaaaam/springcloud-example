@@ -1,4 +1,4 @@
-package com.example.springcloud.openfeign.consumer.provider.controller;
+package com.example.springcloud.openfeign.provider.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

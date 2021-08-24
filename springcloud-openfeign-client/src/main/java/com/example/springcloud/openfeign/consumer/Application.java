@@ -6,7 +6,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableEurekaClient
-@EnableFeignClients
+// 开启Feign客户端,并制定扫描的包
+@EnableFeignClients("com.example.springcloud.openfeign.consumer.service")
 @SpringBootApplication
 public class Application {
 

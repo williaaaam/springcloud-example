@@ -67,7 +67,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.7.RELEASE</version>
                 <configuration>
-                    <mainClass>com.example.springcloud.openfeign.consumer.provider.Application
+                    <mainClass>com.example.springcloud.openfeign.provider.Application
                     </mainClass>
                 </configuration>
                 <executions>

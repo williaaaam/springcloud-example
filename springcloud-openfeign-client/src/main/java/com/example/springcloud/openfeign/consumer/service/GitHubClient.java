@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @date 2021/8/20
  */
 @FeignClient(name = "github-client", url = "https://api.github.com", configuration = OpenFeignConfig.class, contextId = "githubServiceClient")
-public interface GitHubService {
+public interface GitHubClient {
 
     /**
      * @param queryStr

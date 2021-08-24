@@ -1,7 +1,7 @@
 package com.example.springcloud.openfeign.consumer;
 
 import com.example.springcloud.openfeign.consumer.config.OpenFeignConfig;
-import com.example.springcloud.openfeign.consumer.service.GitHubService;
+import com.example.springcloud.openfeign.consumer.service.GitHubClient;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 class ApplicationTests {
 
     @Autowired
-    private GitHubService gitHubService;
+    private GitHubClient gitHubService;
 
     @Autowired
     private ApplicationContext applicationContext;
