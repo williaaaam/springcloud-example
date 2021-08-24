@@ -1,0 +1,27 @@
+# 应用名称
+spring:
+  application:
+    name: springcloud-eureka-example
+  profiles:
+    active: local
+
+
+
+
+
+
+server:
+  port: 8000
+
+eureka:
+  instance:
+    hostname: localhost
+  server:
+    enable-self-preservation: false
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+

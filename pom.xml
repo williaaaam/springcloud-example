@@ -61,7 +61,13 @@
 
     <modules>
         <module>
-            springcloud-openfeign-example
+            springcloud-openfeign-client
+        </module>
+        <module>
+            springcloud-openfeign-provider
+        </module>
+        <module>
+            springcloud-eureka-example
         </module>
     </modules>
 
