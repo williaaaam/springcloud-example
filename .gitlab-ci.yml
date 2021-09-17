@@ -8,8 +8,11 @@ commit_msg:
   stage: lint
   # 它是当前Pipeline节点运行的shell脚本（以项目根目录为上下文执行）
   # 如果脚本执行成功，Pipeline就会进入下一个Job节点，如果执行失败那么Pipeline就会终止
+  # Executor执行shell脚本
   script:
     - /bin/bash commit-msg.sh
+  # Use rules to include or exclude jobs in pipelines.
   rules:
     # 当用户使用push或者Merge Request时候触发 CI Pipeline
-    - pushes
+    # including for branches and tags.
+    - if: '$CI_PIPELINE_SOURCE == "push"'
