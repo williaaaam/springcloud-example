@@ -2,10 +2,11 @@
 stages:
   - lint
 
+# 例如fix(Foo):sth[skip ci]将跳过代码检查
 commit_msg:
   stage: lint
   script:
     - /bin/bash commit-msg.sh
   only:
-    #当用户使用git push的时候触发Pipeline
+    # 当用户使用push或者Merge Request时候触发 CI Pipeline
     - pushes
