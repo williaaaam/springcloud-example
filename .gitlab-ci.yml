@@ -16,3 +16,7 @@ commit_msg:
     # 当用户使用push或者Merge Request时候触发 CI Pipeline
     # including for branches and tags.
     - if: '$CI_PIPELINE_SOURCE == "push"'
+  allow_failure:
+    # The job is allow_failure: true for any of the listed exit codes
+    exit_codes:
+      - 0
