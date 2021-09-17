@@ -11,7 +11,7 @@ echo -e "\033[33m The commit msg: \033[0m $msg"
 
 # if the msg is merge then skip it
 mergePattern='^Merge '
-if [[ $msg =~ $mergeCommitPattern ]]; then
+if [[ $msg =~ $mergePattern ]]; then
     echo -e "\033[32m skip the merge, commit success! \033[0m"
     exit 0
 fi
