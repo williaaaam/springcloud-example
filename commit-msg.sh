@@ -19,7 +19,7 @@ fi
 # check the commit msg
 maxLength=50
 length=${#msg}
-pattern='^(feat|fix|hotfix|test|refactor|docs|style|chroe)\(.*\):.*$'
+pattern='^(feat|fix|hotfix|test|refactor|docs|style|chore)\(.*\):.*$'
 
 if [[ $msg =~ $pattern ]]; then
     if [[ $length -gt $maxLength ]]; then
