@@ -5,7 +5,7 @@ stages:
 commit_msg:
   stage: lint
   script:
-    - /bin/bash commit-msg.s
+    - /bin/bash commit-msg.sh
   only:
     #当用户使用git push的时候触发Pipeline
     - pushes
