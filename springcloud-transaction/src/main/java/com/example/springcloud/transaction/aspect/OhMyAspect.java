@@ -34,14 +34,14 @@ public class OhMyAspect {
         try {
             proceed = joinPoint.proceed();
             System.out.println("方法返回值 = " + proceed);
-            // 方法执行完成后提交事务
-            TransactionUtil.commit();
         } catch (Throwable throwable) {
             // 出现异常进行回滚
             TransactionUtil.rollback();
             return proceed;
         }
 
+        // 方法执行完成后提交事务
+        TransactionUtil.commit();
         return proceed;
     }
 }
