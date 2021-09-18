@@ -8,7 +8,7 @@ import java.lang.annotation.*;
  * @date 2021/9/16
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
+@Target(ElementType.METHOD)
 @Documented
 @Inherited
 public @interface OhMyTransactional {
