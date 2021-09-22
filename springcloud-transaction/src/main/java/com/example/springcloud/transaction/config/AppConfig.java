@@ -19,7 +19,8 @@ import javax.sql.DataSource;
 @EnableAspectJAutoProxy // 注解对@Transactional无效
 // 需要注意的是，@EnableTransactionManagement的proxyTargetClass会影响Spring中所有通过自动代理生成的对象。如果将proxyTargetClass设置为true，那么意味通过@EnableAspectJAutoProxy所生成的代理对象也会使用cglib进行代理
 @EnableTransactionManagement(proxyTargetClass = false) // @Transactional有效
-@Configuration
+// 不对配置类生成代理对象
+@Configuration(proxyBeanMethods = false)
 @ComponentScan(basePackages = {"com.example.springcloud.transaction.service", "com.example.springcloud.transaction.aspect"},
         // 自动检测@Component @Service @Repository @Controller注解
         useDefaultFilters = true,
