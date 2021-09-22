@@ -1,5 +1,6 @@
 package com.example.springcloud.tranction.test;
 
+import com.example.springcloud.transaction.service.FooService;
 import com.example.springcloud.transaction.service.OrderService;
 import com.example.springcloud.transaction.service.ProductionService;
 import org.junit.jupiter.api.Test;
@@ -20,6 +21,10 @@ public class AppTests {
     @Autowired
     ProductionService productionService;
 
+
+    @Autowired
+    private FooService fooService;
+
     @Test
     public void op() {
         orderService.list();
@@ -27,9 +32,16 @@ public class AppTests {
 
 
     @Test
-    public void transaction(){
+    public void transaction() {
 
         productionService.doSth();
+    }
+
+
+    @Test
+    public void testTransaction() {
+        fooService.bool();
+
     }
 
 }
