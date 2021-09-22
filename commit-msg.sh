@@ -3,6 +3,7 @@
 # get commit msg
 if [[ $CI_COMMIT_MESSAGE ]]; then
     msg=$CI_COMMIT_MESSAGE
+    exit 0
 else
     read msg < .git/COMMIT_EDITMSG
 fi
