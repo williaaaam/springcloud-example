@@ -19,7 +19,11 @@ public class ProductionService {
 
     private final JdbcTemplate jdbcTemplate;
 
-
+    /**
+     * Spring容器自动注入PlatformTransactionManager和JdbcTemplate
+     * @param platformTransactionManager
+     * @param jdbcTemplate
+     */
     public ProductionService(PlatformTransactionManager platformTransactionManager,JdbcTemplate jdbcTemplate) {
         this.transactionTemplate = new TransactionTemplate(platformTransactionManager);
         this.jdbcTemplate = jdbcTemplate;

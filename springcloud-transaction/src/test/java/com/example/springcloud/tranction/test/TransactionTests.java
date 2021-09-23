@@ -4,6 +4,7 @@ import com.example.springcloud.transaction.aspect.OhMyAspect;
 import com.example.springcloud.transaction.config.AppConfig;
 import com.example.springcloud.transaction.service.FooService;
 import com.example.springcloud.transaction.service.OhMyService;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -23,8 +24,9 @@ public class TransactionTests {
         ohMyService.update();
     }
 
+    @DisplayName("测试事务传播行为")
     @Test
-    public void transaction2() {
+    public void nestedTransaction() {
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         FooService fooService = annotationConfigApplicationContext.getBean(FooService.class);
         System.out.println("bool返回 = " + fooService.bool());
