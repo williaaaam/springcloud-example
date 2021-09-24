@@ -78,6 +78,7 @@
         <module>springcloud-openfeign-provider</module>
         <module>springcloud-eureka-example</module>
         <module>springcloud-transaction</module>
+        <module>springcloud-sharding-jdbc</module>
     </modules>
 
     <build>

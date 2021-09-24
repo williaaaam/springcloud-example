@@ -16,7 +16,8 @@ import javax.sql.DataSource;
  * @description
  * @date 2021/9/18
  */
-//@EnableAspectJAutoProxy // 注解对@Transactional无效
+// exposeProxy=true表示将代理类暴露到线程上下文中
+@EnableAspectJAutoProxy(exposeProxy = true) // 注解对@Transactional无效
 // 需要注意的是，@EnableTransactionManagement的proxyTargetClass会影响Spring中所有通过自动代理生成的对象。如果将proxyTargetClass设置为true，那么意味通过@EnableAspectJAutoProxy所生成的代理对象也会使用cglib进行代理
 @EnableTransactionManagement(proxyTargetClass = false) // @Transactional有效
 // proxyBeanMethods=false,不对配置类生成代理对象
