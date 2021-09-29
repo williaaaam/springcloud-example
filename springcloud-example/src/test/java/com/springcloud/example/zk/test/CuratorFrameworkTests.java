@@ -300,7 +300,10 @@ public class CuratorFrameworkTests {
                     log.error("", e);
                 } finally {
                     // 释放锁
-                    lock.release();
+                    if (lock.isOwnedByCurrentThread()) {
+                        // avoid exception: You do not own the lock:
+                        lock.release();
+                    }
                 }
             }
         }
