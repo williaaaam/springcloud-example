@@ -80,6 +80,7 @@
         <module>springcloud-transaction</module>
         <module>springcloud-sharding-jdbc</module>
         <module>springcloud-example</module>
+        <module>springcloud-rocketmq</module>
     </modules>
 
     <build>
