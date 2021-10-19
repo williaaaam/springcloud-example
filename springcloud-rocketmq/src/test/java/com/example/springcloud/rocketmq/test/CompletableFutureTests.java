@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.locks.LockSupport;
 
 /**
  * @author Williami
@@ -309,7 +310,7 @@ public class CompletableFutureTests {
     public void handle() {
         CompletableFuture<Integer> first = CompletableFuture
                 .supplyAsync(() -> {
-                    if (false) {
+                    if (true) {
                         throw new RuntimeException("main error!");
                     }
                     return "hello world";
@@ -344,11 +345,10 @@ public class CompletableFutureTests {
                 })
                 .thenApply(data -> new AtomicBoolean(false))
                 .whenCompleteAsync((data, e) -> {
-                    //异常捕捉处理, 但是异常还是会在外层复现
+                    // 异常捕捉处理, 但是异常还是会在外层复现
                     System.out.println(e.getMessage());
                 });
         first.join();
-
     }
 
 
@@ -397,5 +397,190 @@ public class CompletableFutureTests {
         System.out.println(future.join());
     }
 
+
+    // ========================================================场景模拟=====================================================================
+    @DisplayName("模拟thenCombine")
+    @Test
+    public void mockThenCombine() {
+        CompletableFuture<String> orderCompletable = CompletableFuture
+                .runAsync(() -> order())
+                .thenCombineAsync(
+                        CompletableFuture.supplyAsync(() -> run()),
+                        // order()和run()都运行完才去执行sleep()
+                        (s, w) -> sleep());
+
+        System.out.println(orderCompletable.join());
+
+    }
+
+    @Test
+    public void thenAccept() {
+        ExecutorService executorService = new ThreadPoolExecutor(5, 10, 5L,
+                TimeUnit.SECONDS, new ArrayBlockingQueue<>(10));
+        CompletableFuture<Void> future = CompletableFuture.supplyAsync(() -> {
+            int a = 0;
+            int b = 666;
+            int c = b / a;
+            return true;
+        }, executorService).thenAccept(System.out::println);
+
+        //如果不加 get()方法这一行，看不到异常信息
+        //future.get();
+    }
+
+    @SneakyThrows
+    public static void order() {
+        log.info(">>> {}准备买机票", Thread.currentThread().getName());
+        TimeUnit.SECONDS.sleep(5L);
+    }
+
+    @SneakyThrows
+    public static String run() {
+        log.info(">>> {}下了飞机开跑", Thread.currentThread().getName());
+        TimeUnit.SECONDS.sleep(4L);
+        return "Run";
+    }
+
+    @SneakyThrows
+    public static String sleep() {
+        TimeUnit.SECONDS.sleep(2L);
+        log.info(">>> {}到了酒店啦，开始碎觉", Thread.currentThread().getName());
+        return "Sleep";
+    }
+
+    @Test
+    public void supply() {
+
+        CompletableFuture.completedFuture("000")
+                .thenApply(r -> r)
+                .whenComplete((r, e) -> System.out.println(format(r)));
+
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
+                    LockSupport.parkNanos(TimeUnit.MILLISECONDS.toNanos(10));
+                    return "111";
+                })
+                .thenApply(r -> r)
+                .whenComplete((r, e) -> System.out.println(format(r)));
+
+        completableFuture.join();
+    }
+
+    private static String format(String msg) {
+        return String.format("[%s] %s", Thread.currentThread().getName(), msg);
+    }
+
+    @SneakyThrows
+    @Test
+    public void completionStack() {
+        // 这是一个未完成的CompletableFuture
+        CompletableFuture<String> base = new CompletableFuture<>();
+        log.info("start another thread to complete it");
+        new Thread(
+                () -> {
+                    log.info("will complete in 1 sec");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    //base.complete("completed");
+                })
+                .start();
+        // 将base.complete("completed")注释掉后，主线程将一直卡在这里
+        log.info(base.get());
+
+        CompletableFuture<String> f1 = CompletableFuture.supplyAsync(() -> {
+            System.out.println("hello world f1");
+            sleep(1); // TimeUnit.SECONDS.sleep(1)
+            return "f1";
+        });
+        CompletableFuture<String> f2 = f1.thenApply(r -> {
+            System.out.println(r);
+            sleep(1);
+            return "f2";
+        });
+
+        CompletableFuture<String> f3 = f2.thenApply(r -> {
+            System.out.println(r);
+            sleep(1);
+            return "f3";
+        });
+
+        CompletableFuture<String> f4 = f1.thenApply(r -> {
+            System.out.println(r);
+            sleep(1);
+            return "f4";
+        });
+        CompletableFuture<String> f5 = f4.thenApply(r -> {
+            System.out.println(r);
+            sleep(1);
+            return "f5";
+        });
+        CompletableFuture<String> f6 = f5.thenApply(r -> {
+            System.out.println(r);
+            sleep(1);
+            return "f6";
+        });
+
+    }
+
+    @SneakyThrows
+    private static void sleep(long duration) {
+        TimeUnit.SECONDS.sleep(duration);
+    }
+
+    @SneakyThrows
+    @Test
+    public void thenAcceptAndThenApply() {
+        CompletableFuture<String> base = new CompletableFuture<>();
+        CompletableFuture<String> future =
+                base.thenApply(
+                        s -> {
+                            log("2");
+                            return s + " 2";
+                        });
+        base.thenAccept(s -> log(s + "a")).thenAccept(aVoid -> log("b"));
+        base.thenAccept(s -> log(s + "c")).thenAccept(aVoid -> log("d"));
+        //base.complete("1");
+
+        //log.info("base result: {}", base.get());
+        //log.info("future result: {}", future.get());
+
+    }
+
+    private static void log(String msg) {
+        log.info(">>> [{}] {}", Thread.currentThread().getName(), msg);
+    }
+
+    @SneakyThrows
+    @Test
+    public void commonSequence() {
+        CompletableFuture<String> completableFuture = new CompletableFuture<>();
+
+        completableFuture.thenAccept((s) -> log("Completion 0"));
+        completableFuture
+                .thenAccept((s) -> log("Completion 3"))
+                .thenAccept((s) -> {
+                    sleep(2);
+                    log("Completion 4");
+                })
+                .thenAcceptAsync((s) -> log("Completion 5"))
+                .thenAcceptAsync((s) -> log("Completion 1"));
+        completableFuture
+                .thenAcceptAsync((s) -> {
+                    sleep(10);
+                    log("Completion 6");
+                })
+                .thenAcceptAsync((s) -> log("Completion 7"))
+                .thenAcceptAsync((s) -> {
+                    sleep(10);
+                    log("Completion 8");
+                })
+                .thenAcceptAsync((s) -> log("Completion 2"));
+
+        // 标识任务已完成
+        completableFuture.complete("base");
+        System.out.println(completableFuture.get());
+    }
 
 }
