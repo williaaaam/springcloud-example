@@ -41,6 +41,8 @@ public class GenericMethodAndWildcardTests {
     @Test
     public void test1() {
 
+        System.out.println(System.getProperty("user.home"));
+
         List<Number> list = new ArrayList<>();
 
         List<Integer> integerList = new ArrayList<>();
@@ -67,6 +69,13 @@ public class GenericMethodAndWildcardTests {
         copy3(list);
         copy4(list);
         copy5(list);
+    }
+
+    @Test
+    public void testJvmBoolean() {
+        boolean flag = true;
+        if (flag) System.out.println("Hello, Java!");
+        if (flag == true) System.out.println("Hello, JVM!");
     }
 
     public static <T> void copy(List<? super T> dest, List<? extends T> src) {  // bounded wildcard parameterized types
