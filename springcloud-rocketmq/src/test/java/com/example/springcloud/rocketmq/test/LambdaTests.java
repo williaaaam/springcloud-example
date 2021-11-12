@@ -12,13 +12,10 @@ public class LambdaTests {
     private int i = 10;
 
     public static void main(String[] args) {
-    }
-
-    private long foo() {
-        return IntStream.range(1, 10).map(i -> i * 2).map(j -> bar(i + j)).count();
-    }
-
-    private int bar(int j) {
-        return j + 1;
+        int x = 1;
+        //IntStream.of(1, 2, 3).map(i -> i * 2).map(i -> i * x);
+        IntStream.of(1, 2, 3).map(i -> i * 2);
+        // 方法引用不会生成额外的方法
+        IntStream.of(1, 2, 3).map(Integer::hashCode);
     }
 }
