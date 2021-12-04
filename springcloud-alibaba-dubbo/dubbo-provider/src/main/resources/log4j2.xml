@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--status="WARN" :用于设置log4j2自身内部日志的信息输出级别，默认是OFF-->
+<!--monitorInterval="30"  :间隔秒数,自动检测配置文件的变更和重新配置本身reconfigure,最小值是5-->
+<Configuration status="WARN">
+    <!--参考文档: https://logging.apache.org/log4j/2.x/-->
+    <Properties>
+        <!--自定义一些常量，之后使用${变量名}引用-->
+        <Property name="service">lc-m-web</Property>
+        <Property name="logFilePath">/home/work/log</Property>
+        <Property name="syslog.level">DEBUG</Property>
+        <!--%n表示系统换行符，Windows:'\r\n', Linux:'\n'-->
+        <!--%t表示创建logging事件的线程名-->
+        <Property name="pattern">[%-5p] %d{yyyy-MM-dd HH:mm:ss,SSS} $${ctx:userId} method:%l%n%m%n</Property>
+        <!--<Property name="pattern">[%p %d] %c{1.} [%t] %m%n</Property>-->
+    </Properties>
+
+    <!--Appenders用来分发LogEvents-->
+    <!--Appenders:定义输出内容,输出格式,输出方式,日志保存策略等,常用其下三种标签[console,File,RollingFile,Socket Servers, JMS]-->
+    <Appenders>
+        <!--console :控制台输出的配置-->
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <!--PatternLayout :输出日志的格式,LOG4J2定义了输出代码,详见第二部分-->
+            <!-- 使用指定的Layout,除了新增脱敏配置，其他配置和PatternLayout完全一致 -->
+            <!--Property Support-->
+            <!--Layout format LogEvent-->
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+
+        </Console>
+
+        <RollingRandomAccessFile name="ALL-APPENDER" fileName="${logFilePath}/${service}/default-all.log"
+                                 filePattern="${logFilePath}/${service}/default-all.log.%d{yyyy-MM-dd}-%i.gz">
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+            <!-- Policies :日志滚动策略-->
+            <Policies>
+                <!-- TimeBasedTriggeringPolicy :时间滚动策略,默认0点小时产生新的文件,interval="6" : 自定义文件滚动时间间隔,每隔6小时产生新文件, modulate="true" : 产生文件是否以0点偏移时间,即6点,12点,18点,0点-->
+                <!--interval属性用来指定多久滚动一次，默认是1 hour-->
+                <TimeBasedTriggeringPolicy/>
+                <!-- SizeBasedTriggeringPolicy :文件大小滚动策略-->
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20，超过20则会直接覆盖 -->
+            <DefaultRolloverStrategy max="20"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="WARN-APPENDER" fileName="${logFilePath}/${service}/common-warn.log"
+                                 filePattern="${logFilePath}/${service}/common-warn.log.%d{yyyy-MM-dd}-%i.gz">
+            <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="ERROR-APPENDER" fileName="${logFilePath}/${service}/common-error.log"
+                                 filePattern="${logFilePath}/${service}/common-error.log.%d{yyyy-MM-dd}-%i.gz">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!--<PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>-->
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="PASSPORT-APPENDER" fileName="${logFilePath}/${service}/passport.log"
+                                 filePattern="${logFilePath}/${service}/passport.log.%d{yyyy-MM-dd}-%i.gz">
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="KEYCENTER-APPENDER" fileName="${logFilePath}/${service}/keycenter.log"
+                                 filePattern="${logFilePath}/${service}/keycenter.log.%d{yyyy-MM-dd}-%i.gz">
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="20"/>
+        </RollingRandomAccessFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.xiaomi.passport" level="${syslog.level}" additivity="false">
+            <AppenderRef ref="PASSPORT-APPENDER"/>
+        </Logger>
+        <Logger name="keycenter" level="${syslog.level}" additivity="false">
+            <AppenderRef ref="KEYCENTER-APPENDER"/>
+        </Logger>
+
+        <!--全异步日志-->
+        <Root level="${syslog.level}">
+            <AppenderRef ref="CONSOLE"/>
+        </Root>
+    </Loggers>
+</Configuration>
