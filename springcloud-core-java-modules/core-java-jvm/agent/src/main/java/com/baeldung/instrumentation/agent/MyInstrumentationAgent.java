@@ -15,6 +15,11 @@ public class MyInstrumentationAgent {
         transformClass(className,inst);
     }
 
+    /**
+     * agentmain方法的本质也是把Class转换器注册到到instrumentation中
+     * @param agentArgs
+     * @param inst
+     */
     public static void agentmain(String agentArgs, Instrumentation inst) {
         LOGGER.info("[Agent] In agentmain method");
 

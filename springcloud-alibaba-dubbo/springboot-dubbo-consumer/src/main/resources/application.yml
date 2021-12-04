@@ -1,0 +1,11 @@
+# 应用名称
+server:
+  port: 8001
+
+dubbo:
+  application:
+    name: springboot-dubbo-consumer
+  registry:
+    address: zookeeper://101.35.19.88:2180,101.35.19.88:2181,101.35.19.88:2182
+
+

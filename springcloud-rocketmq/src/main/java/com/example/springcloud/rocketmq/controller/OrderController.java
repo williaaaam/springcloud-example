@@ -1,5 +1,7 @@
 package com.example.springcloud.rocketmq.controller;
 
+import com.example.springcloud.rocketmq.services.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,4 +11,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class OrderController {
+
+    @Autowired
+    private static OrderService orderService;
 }

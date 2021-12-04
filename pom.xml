@@ -82,6 +82,7 @@
         <module>springcloud-example</module>
         <module>springcloud-rocketmq</module>
         <module>springcloud-core-java-modules</module>
+        <module>springcloud-alibaba-dubbo</module>
     </modules>
 
     <build>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd        http://dubbo.apache.org/schema/dubbo        http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="dubbo-provider"/>
+
+    <!--注册中心-->
+    <!-- 使用multicast广播注册中心暴露服务地址 -->
+    <!--<dubbo:registry address="multicast://224.5.6.7:1234"/>-->
+    <!--设置zk根节点为zk_dubbo-->
+    <dubbo:registry group="zk_dubbo" version="*" protocol="zookeeper" address="101.35.19.88:2180,101.35.19.88:2181,101.35.19.88:2182" id="zk_registry" />
+
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!--<dubbo:protocol name="hessian" port="8080"/>-->
+
+    <!-- 声明需要暴露的服务接口 -->
+    <!--使用多个协议暴露服务-->
+    <dubbo:service interface="com.example.dubbo.interfaces.provider.IName" ref="nameService" protocol="dubbo,hessian" registry="zk_registry"/>
+
+    <!-- 和本地bean一样实现服务 -->
+    <bean id="nameService" class="com.example.dubbo.interfaces.provider.impl.DubboName"/>
+
+</beans>
