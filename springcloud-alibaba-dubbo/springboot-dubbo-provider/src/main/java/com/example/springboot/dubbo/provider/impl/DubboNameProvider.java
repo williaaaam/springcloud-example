@@ -10,7 +10,7 @@ import com.example.dubbo.interfaces.IName;
  * @date 2021/12/4
  */
 //@DubboService(version = "v1", protocol = "protocol2")
-public class DubboName implements IName {
+public class DubboNameProvider implements IName {
 
     @Override
     public String getName(String param) {

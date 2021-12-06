@@ -1,0 +1,2 @@
+dog=com.example.springboot.dubbo.provider.impl.HotDogRunning
+python=com.example.springboot.dubbo.provider.impl.PythonRunning

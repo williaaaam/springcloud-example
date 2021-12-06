@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/dubbo")
-public class DubboNameController {
+public class DubboNameConsumerController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DubboNameController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DubboNameConsumerController.class);
     /**
      * 1. 服务启动时订阅注册中心服务地址列表
      * 2. 生成IName提供者服务的代理对象

@@ -15,9 +15,9 @@ import javax.ws.rs.Produces;
  * @description
  * @date 2021/12/4
  */
-@DubboService(version = "v2", protocol = "protocol1")
+@DubboService(version = "v2")
 @Path("/dubbo") // REST服务必须要有@Path注解
-public class BootDubboName implements IName {
+public class BootDubboNameProvider implements IName {
 
     @GET
     @Path("/name")
