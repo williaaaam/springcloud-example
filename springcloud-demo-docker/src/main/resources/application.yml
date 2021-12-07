@@ -1,0 +1,13 @@
+# 应用名称
+spring:
+  application:
+    name: springcloud-demo-docker
+server:
+  port: 6388
+
+
+logging:
+  config: classpath:logback.xml
+  file:
+    # 将宿主机目录挂载到容器内部目录后，那么日志就会持久化容器外部的宿主机目录中
+    path: /home/work/software/docker/app/logs/

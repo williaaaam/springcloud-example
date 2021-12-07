@@ -83,6 +83,7 @@
         <module>springcloud-rocketmq</module>
         <module>springcloud-core-java-modules</module>
         <module>springcloud-alibaba-dubbo</module>
+        <module>springcloud-demo-docker</module>
     </modules>
 
     <build>
