@@ -25,7 +25,7 @@ public class DemoEventHandler implements Lifecycle {
      *
      * @param event
      */
-    @EventListener
+    @EventListener(value = DemoEvent.class)
     public void onApplicationEvent(DemoEvent event) {
         LOGGER.info(">>> {} DemoEventHandler#onApplicationEvent, 触发DemoEvent", Thread.currentThread().getName());
         event.fire();
@@ -46,6 +46,16 @@ public class DemoEventHandler implements Lifecycle {
     @Override
     public boolean isRunning() {
         return this.running.get();
+    }
+
+    /**
+     * Listener方法参数有且只能有一个Event参数
+     *
+     * @param demoEvent
+     */
+    @EventListener
+    public void listener(DemoEvent demoEvent) {
+        LOGGER.info(">>> {} Listener", Thread.currentThread().getName());
     }
 
 }
