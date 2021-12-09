@@ -90,9 +90,8 @@
     <logger level="ERROR" name="io.netty"/>
 
     <!-- 输出到文件，可定义更多的 Appender -->
-    <root level="${log.level}" name="com.mifi.lc.vc">
-        <appender-ref ref="logInfoFile"/>
-        <appender-ref ref="logErrorFile"/>
+    <root level="INFO" name="com.example.springcloud.demo.docker">
+        <appender-ref ref="STDOUT"/>
     </root>
 
 </configuration>
