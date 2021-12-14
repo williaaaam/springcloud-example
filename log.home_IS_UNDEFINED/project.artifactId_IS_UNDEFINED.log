@@ -1,0 +1,86 @@
+[2021-12-09 10:14:10,884] [INFO ] com.example.springcloud.demo.docker.App 55 -- [] Starting App on Williami with PID 916 (E:\opensource\springcloud-parent\springcloud-demo-docker\target\classes started by Williami in E:\opensource\springcloud-parent)
+[2021-12-09 10:14:10,887] [DEBUG] com.example.springcloud.demo.docker.App 56 -- [] Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+[2021-12-09 10:14:10,888] [INFO ] com.example.springcloud.demo.docker.App 651 -- [] No active profile set, falling back to default profiles: default
+[2021-12-09 10:14:13,032] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 108 -- [] Tomcat initialized with port(s): 6388 (http)
+[2021-12-09 10:14:13,062] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Initializing ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:14:13,064] [INFO ] org.apache.catalina.core.StandardService 173 -- [] Starting service [Tomcat]
+[2021-12-09 10:14:13,067] [INFO ] org.apache.catalina.core.StandardEngine 173 -- [] Starting Servlet engine: [Apache Tomcat/9.0.41]
+[2021-12-09 10:14:13,226] [INFO ] o.a.c.c.C.[Tomcat].[localhost].[/] 173 -- [] Initializing Spring embedded WebApplicationContext
+[2021-12-09 10:14:13,226] [INFO ] o.s.b.w.s.c.ServletWebServerApplicationContext 285 -- [] Root WebApplicationContext: initialization completed in 2229 ms
+[2021-12-09 10:14:13,658] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 181 -- [] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-12-09 10:14:13,960] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Starting ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:14:14,012] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 220 -- [] Tomcat started on port(s): 6388 (http) with context path ''
+[2021-12-09 10:14:14,027] [INFO ] com.example.springcloud.demo.docker.App 61 -- [] Started App in 4.197 seconds (JVM running for 5.708)
+[2021-12-09 10:15:13,470] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 218 -- [] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-12-09 10:15:20,156] [INFO ] com.example.springcloud.demo.docker.App 55 -- [] Starting App on Williami with PID 4152 (E:\opensource\springcloud-parent\springcloud-demo-docker\target\classes started by Williami in E:\opensource\springcloud-parent)
+[2021-12-09 10:15:20,159] [DEBUG] com.example.springcloud.demo.docker.App 56 -- [] Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+[2021-12-09 10:15:20,160] [INFO ] com.example.springcloud.demo.docker.App 651 -- [] No active profile set, falling back to default profiles: default
+[2021-12-09 10:15:21,071] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 108 -- [] Tomcat initialized with port(s): 6388 (http)
+[2021-12-09 10:15:21,081] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Initializing ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:15:21,082] [INFO ] org.apache.catalina.core.StandardService 173 -- [] Starting service [Tomcat]
+[2021-12-09 10:15:21,083] [INFO ] org.apache.catalina.core.StandardEngine 173 -- [] Starting Servlet engine: [Apache Tomcat/9.0.41]
+[2021-12-09 10:15:21,156] [INFO ] o.a.c.c.C.[Tomcat].[localhost].[/] 173 -- [] Initializing Spring embedded WebApplicationContext
+[2021-12-09 10:15:21,156] [INFO ] o.s.b.w.s.c.ServletWebServerApplicationContext 285 -- [] Root WebApplicationContext: initialization completed in 918 ms
+[2021-12-09 10:15:21,395] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 181 -- [] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-12-09 10:15:21,633] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Starting ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:15:21,650] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 220 -- [] Tomcat started on port(s): 6388 (http) with context path ''
+[2021-12-09 10:15:21,657] [INFO ] com.example.springcloud.demo.docker.App 61 -- [] Started App in 1.875 seconds (JVM running for 2.535)
+[2021-12-09 10:15:22,988] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 218 -- [] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-12-09 10:15:40,278] [INFO ] com.example.springcloud.demo.docker.App 55 -- [] Starting App on Williami with PID 21116 (E:\opensource\springcloud-parent\springcloud-demo-docker\target\classes started by Williami in E:\opensource\springcloud-parent)
+[2021-12-09 10:15:40,280] [DEBUG] com.example.springcloud.demo.docker.App 56 -- [] Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+[2021-12-09 10:15:40,281] [INFO ] com.example.springcloud.demo.docker.App 651 -- [] No active profile set, falling back to default profiles: default
+[2021-12-09 10:16:39,474] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 108 -- [] Tomcat initialized with port(s): 6388 (http)
+[2021-12-09 10:16:39,481] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Initializing ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:16:39,482] [INFO ] org.apache.catalina.core.StandardService 173 -- [] Starting service [Tomcat]
+[2021-12-09 10:16:39,482] [INFO ] org.apache.catalina.core.StandardEngine 173 -- [] Starting Servlet engine: [Apache Tomcat/9.0.41]
+[2021-12-09 10:16:39,547] [INFO ] o.a.c.c.C.[Tomcat].[localhost].[/] 173 -- [] Initializing Spring embedded WebApplicationContext
+[2021-12-09 10:16:39,548] [INFO ] o.s.b.w.s.c.ServletWebServerApplicationContext 285 -- [] Root WebApplicationContext: initialization completed in 723 ms
+[2021-12-09 10:16:39,669] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 181 -- [] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-12-09 10:16:39,770] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Starting ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:16:39,789] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 220 -- [] Tomcat started on port(s): 6388 (http) with context path ''
+[2021-12-09 10:16:39,795] [INFO ] com.example.springcloud.demo.docker.App 61 -- [] Started App in 60.167 seconds (JVM running for 62.315)
+[2021-12-09 10:17:14,730] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 218 -- [] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-12-09 10:17:17,658] [INFO ] com.example.springcloud.demo.docker.App 55 -- [] Starting App on Williami with PID 1204 (E:\opensource\springcloud-parent\springcloud-demo-docker\target\classes started by Williami in E:\opensource\springcloud-parent)
+[2021-12-09 10:17:17,661] [DEBUG] com.example.springcloud.demo.docker.App 56 -- [] Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+[2021-12-09 10:17:17,662] [INFO ] com.example.springcloud.demo.docker.App 651 -- [] No active profile set, falling back to default profiles: default
+[2021-12-09 10:17:18,308] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 108 -- [] Tomcat initialized with port(s): 6388 (http)
+[2021-12-09 10:17:18,316] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Initializing ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:17:18,316] [INFO ] org.apache.catalina.core.StandardService 173 -- [] Starting service [Tomcat]
+[2021-12-09 10:17:18,316] [INFO ] org.apache.catalina.core.StandardEngine 173 -- [] Starting Servlet engine: [Apache Tomcat/9.0.41]
+[2021-12-09 10:17:18,378] [INFO ] o.a.c.c.C.[Tomcat].[localhost].[/] 173 -- [] Initializing Spring embedded WebApplicationContext
+[2021-12-09 10:17:18,379] [INFO ] o.s.b.w.s.c.ServletWebServerApplicationContext 285 -- [] Root WebApplicationContext: initialization completed in 676 ms
+[2021-12-09 10:17:18,480] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 181 -- [] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-12-09 10:17:18,581] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Starting ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:17:18,596] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 220 -- [] Tomcat started on port(s): 6388 (http) with context path ''
+[2021-12-09 10:17:18,603] [INFO ] com.example.springcloud.demo.docker.App 61 -- [] Started App in 1.304 seconds (JVM running for 1.975)
+[2021-12-09 10:17:22,925] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 218 -- [] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-12-09 10:17:29,002] [INFO ] com.example.springcloud.demo.docker.App 55 -- [] Starting App on Williami with PID 22332 (E:\opensource\springcloud-parent\springcloud-demo-docker\target\classes started by Williami in E:\opensource\springcloud-parent)
+[2021-12-09 10:17:29,005] [DEBUG] com.example.springcloud.demo.docker.App 56 -- [] Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+[2021-12-09 10:17:29,005] [INFO ] com.example.springcloud.demo.docker.App 651 -- [] No active profile set, falling back to default profiles: default
+[2021-12-09 10:17:36,365] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 108 -- [] Tomcat initialized with port(s): 6388 (http)
+[2021-12-09 10:17:36,373] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Initializing ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:17:36,374] [INFO ] org.apache.catalina.core.StandardService 173 -- [] Starting service [Tomcat]
+[2021-12-09 10:17:36,374] [INFO ] org.apache.catalina.core.StandardEngine 173 -- [] Starting Servlet engine: [Apache Tomcat/9.0.41]
+[2021-12-09 10:17:36,437] [INFO ] o.a.c.c.C.[Tomcat].[localhost].[/] 173 -- [] Initializing Spring embedded WebApplicationContext
+[2021-12-09 10:17:36,437] [INFO ] o.s.b.w.s.c.ServletWebServerApplicationContext 285 -- [] Root WebApplicationContext: initialization completed in 686 ms
+[2021-12-09 10:17:36,559] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 181 -- [] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-12-09 10:17:36,663] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Starting ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:17:36,681] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 220 -- [] Tomcat started on port(s): 6388 (http) with context path ''
+[2021-12-09 10:17:36,688] [INFO ] com.example.springcloud.demo.docker.App 61 -- [] Started App in 8.125 seconds (JVM running for 9.099)
+[2021-12-09 10:18:10,545] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 218 -- [] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-12-09 10:29:58,166] [INFO ] com.example.springcloud.demo.docker.App 55 -- [] Starting App on Williami with PID 14712 (E:\opensource\springcloud-parent\springcloud-demo-docker\target\classes started by Williami in E:\opensource\springcloud-parent)
+[2021-12-09 10:29:58,169] [DEBUG] com.example.springcloud.demo.docker.App 56 -- [] Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+[2021-12-09 10:29:58,170] [INFO ] com.example.springcloud.demo.docker.App 651 -- [] No active profile set, falling back to default profiles: default
+[2021-12-09 10:29:58,860] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 108 -- [] Tomcat initialized with port(s): 6388 (http)
+[2021-12-09 10:29:58,867] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Initializing ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:29:58,867] [INFO ] org.apache.catalina.core.StandardService 173 -- [] Starting service [Tomcat]
+[2021-12-09 10:29:58,867] [INFO ] org.apache.catalina.core.StandardEngine 173 -- [] Starting Servlet engine: [Apache Tomcat/9.0.41]
+[2021-12-09 10:29:58,923] [INFO ] o.a.c.c.C.[Tomcat].[localhost].[/] 173 -- [] Initializing Spring embedded WebApplicationContext
+[2021-12-09 10:29:58,924] [INFO ] o.s.b.w.s.c.ServletWebServerApplicationContext 285 -- [] Root WebApplicationContext: initialization completed in 723 ms
+[2021-12-09 10:29:59,031] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 181 -- [] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-12-09 10:29:59,116] [INFO ] o.apache.coyote.http11.Http11NioProtocol 173 -- [] Starting ProtocolHandler ["http-nio-6388"]
+[2021-12-09 10:29:59,131] [INFO ] o.s.b.w.embedded.tomcat.TomcatWebServer 220 -- [] Tomcat started on port(s): 6388 (http) with context path ''
+[2021-12-09 10:29:59,137] [INFO ] com.example.springcloud.demo.docker.App 61 -- [] Started App in 1.267 seconds (JVM running for 1.856)
+[2021-12-09 10:29:59,139] [INFO ] c.e.s.demo.docker.listener.DemoListener 19 -- [] DemoListener#onApplicationEvent, 触发DemoEvent
+[2021-12-09 10:29:59,139] [INFO ] c.e.s.demo.docker.listener.DemoEvent 39 -- [] >>> DemoEvent#fire发布事件
+[2021-12-09 10:30:34,228] [INFO ] o.s.s.concurrent.ThreadPoolTaskExecutor 218 -- [] Shutting down ExecutorService 'applicationTaskExecutor'
