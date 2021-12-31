@@ -39,4 +39,16 @@ public class DockerDemoController {
         return "Hello Docker ~";
     }
 
+    @RequestMapping("request1")
+    public int request1(HttpServletRequest httpServletRequest) {
+        return httpServletRequest.hashCode();
+    }
+
+    @RequestMapping("request2")
+    public int request2(HttpServletRequest httpServletRequest) {
+        return httpServletRequest.hashCode();
+    }
+
+
+
 }
