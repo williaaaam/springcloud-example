@@ -13,7 +13,7 @@ public class SerializableTests {
 
         System.out.println("-----------------------------------开始-------------------------------------");
 
-        String filePath = "C:\\Users\\Williami\\Desktop\\serializableV.txt";
+        String filePath = "C:\\Users\\Williami\\Desktop\\serializable.txt";
         People people = new People();
         people.setAge(18);
         people.setName("Williami");
@@ -93,14 +93,14 @@ public class SerializableTests {
         public People(String name, Integer age, double salary) {
             this.name = name;
             this.age = age;
-            this.salary = salary;
+            //this.salary = salary;
             System.out.println("People有参默认构造器");
         }
 
         String name;
         Integer age;
 
-        double salary;
+        //double salary;
 
         public String getName() {
             return name;
@@ -118,13 +118,13 @@ public class SerializableTests {
             this.age = age;
         }
 
-        public double getSalary() {
-            return salary;
-        }
-
-        public void setSalary(double salary) {
-            this.salary = salary;
-        }
+        //public double getSalary() {
+        //    return salary;
+        //}
+        //
+        //public void setSalary(double salary) {
+        //    this.salary = salary;
+        //}
 
         /**
          * 不想实现Externalizable接口，又想按照自己的规则进行序列化
@@ -136,10 +136,10 @@ public class SerializableTests {
             System.out.println("invoke custom writeObject");
             // 调用默认提供方式
             //System.out.println("invoke defaultWriteObject");
-            //outputStream.defaultWriteObject();
+            outputStream.defaultWriteObject();
             System.out.println("--- 这是自定义的writeExternal方法 ---");
-            outputStream.writeObject(this.name);
-            outputStream.writeInt(this.age);
+            //outputStream.writeObject(this.name);
+            //outputStream.writeInt(this.age);
             System.out.println("after invoke defaultWriteObject");
         }
 
@@ -152,10 +152,10 @@ public class SerializableTests {
             System.out.println("invoke custom readObject");
             // 调用默认提供方式
             //System.out.println("invoke defaultReadObject");
-            //objectInputStream.defaultReadObject();
+            objectInputStream.defaultReadObject();
             System.out.println("--- 这是自定义的readExternal方法 ---");
-            this.name = (String) objectInputStream.readObject();
-            this.age = objectInputStream.readInt();
+            //this.name = (String) objectInputStream.readObject();
+            //this.age = objectInputStream.readInt();
             System.out.println("after invoke defaultReadObject");
         }
 
@@ -172,7 +172,7 @@ public class SerializableTests {
         /**
          * 在反序列化后对返回对象的进行处理
          * <p>
-         *     单例需要额外处理该方法
+         * 单例需要额外处理该方法
          *
          * @return
          */
@@ -183,7 +183,10 @@ public class SerializableTests {
 
         @Override
         public String toString() {
-            return "People{" + "name='" + name + '\'' + ", age=" + age + ", salary=" + salary + '}';
+            return "People{" +
+                    "name='" + name + '\'' +
+                    ", age=" + age +
+                    '}';
         }
 
     }
