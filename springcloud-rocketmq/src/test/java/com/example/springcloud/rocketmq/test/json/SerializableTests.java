@@ -21,7 +21,7 @@ public class SerializableTests {
         System.out.println("-----------------------------------开始序列化-------------------------------------");
 
         // 序列化
-        serialize(filePath, people);
+        //serialize(filePath, people);
 
         System.out.println("------------------------------------开始反序列化------------------------------------");
 
