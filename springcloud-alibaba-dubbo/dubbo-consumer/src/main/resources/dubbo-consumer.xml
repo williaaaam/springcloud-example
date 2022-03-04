@@ -13,5 +13,5 @@
 
 
     <!-- 生成远程服务代理，可以和本地bean一样使用nameService,nameService代理对象会注入到IOC容器中 -->
-    <dubbo:reference id="nameService" interface="com.example.dubbo.interfaces.provider.IName" registry="zk_registry" />
+    <dubbo:reference id="nameService" interface="com.example.dubbo.interfaces.provider.IName" registry="zk_registry" timeout="10000"/>
 </beans>
