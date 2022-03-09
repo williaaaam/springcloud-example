@@ -81,7 +81,8 @@
         <module>springcloud-sharding-jdbc</module>
         <module>springcloud-example</module>
         <module>springcloud-rocketmq</module>
-        <module>springcloud-core-java-modules</module>
+        <module>springcloud-kafka</module>
+        <module>springcloud-core-java</module>
         <module>springcloud-alibaba-dubbo</module>
         <module>springcloud-demo-docker</module>
     </modules>
