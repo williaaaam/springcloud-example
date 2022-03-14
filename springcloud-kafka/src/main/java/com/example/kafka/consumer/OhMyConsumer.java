@@ -1,15 +1,14 @@
 package com.example.kafka.consumer;
 
-import org.apache.kafka.clients.consumer.Consumer;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.consumer.*;
+import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -51,16 +50,30 @@ public class OhMyConsumer {
         // earliest第一次从头开始消费，重启以后按照消费offset记录继续消费，需要区别consumer.seekToBeginning(每次都从头开始消费)
         properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
+        // 设置分配策略RoundRobin 轮询，针对所有Topic而言
+        properties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, RoundRobinAssignor.class.getName());
+
+        // 组id
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG, TOPIC_NAME);
+
         // 2. 创建消费者的客户端
         Consumer<String, String> consumer = new KafkaConsumer<String, String>(properties);
 
         // 消费者订阅主题列表，可以订阅多个主题
-        consumer.subscribe(Arrays.asList(TOPIC_NAME));
+        consumer.subscribe(Arrays.asList(TOPIC_NAME)); // 消费一个主题
         // 消费者指定主题分区消费，例如主题的0号分区
-        //consumer.assign(Arrays.asList(new TopicPartition(TOPIC_NAME, 0)));
+        //consumer.assign(Arrays.asList(new TopicPartition(TOPIC_NAME, 0))); // 消费某个主题特定的一个分区
         // 消费者回溯消费:消费0-offse之间的消费
         //consumer.seekToBeginning(Arrays.asList(new TopicPartition(TOPIC_NAME, 0)));
-        //consumer.seek(new TopicPartition(TOPIC_NAME, 0), 10);
+        // 指定位置进行消费
+        Set<TopicPartition> assignment = consumer.assignment();
+
+        // 保证分区分配方案已经指定完毕
+        while (assignment.size() == 0){ // 说明
+            consumer.poll(Duration.ofSeconds(1)); // 加速获取分区分配方案
+            assignment = consumer.assignment();
+        }
+        consumer.seek(new TopicPartition(TOPIC_NAME, 0), 10);
 
         // 拿到主题所有分区
         /*List<PartitionInfo> partitionInfos = consumer.partitionsFor(TOPIC_NAME);
