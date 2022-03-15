@@ -10,7 +10,7 @@ package com.example.kafka.ds;
 public class RBT<K extends Comparable<K>, V> {
 
     private static final boolean RED = false;
-    private static final boolean BLACk = false;
+    private static final boolean BLACK = false;
 
     private TNode root;
 
@@ -64,7 +64,7 @@ public class RBT<K extends Comparable<K>, V> {
             // 将node左右孩子和父指针都向null, wait gc
             node.left = node.right = node.parent = null;
             // 替换完成后，调整平衡
-            if (node.color == BLACk) {
+            if (node.color == BLACK) {
                 fixAfterRemove(replacement);
             }
         } else if (node.parent == null) {
@@ -72,7 +72,7 @@ public class RBT<K extends Comparable<K>, V> {
         } else {
             // 删除的是叶子节点
             // 先调整
-            if (node.color == BLACk) {
+            if (node.color == BLACK) {
                 fixAfterRemove(node);
             }
             // 再删除
@@ -90,10 +90,22 @@ public class RBT<K extends Comparable<K>, V> {
     /**
      * 删除后的调整处理
      * 2-3-4树删除操作
-     * @param node
+     *
+     * @param x 替代节点
      */
-    private void fixAfterRemove(TNode node) {
+    private void fixAfterRemove(TNode x) {
+        if (x != root && colorOf(x) == BLACK) { // x要是红色，直接染成黑色
+            if (x == leftOf(parentOf(x))) { //  x是父节点的左节点
+                // 查找兄弟接地
+                TNode tNode = rightOf(parentOf(x));
+                // 1. 跟兄弟借，兄弟节点有借
+                // 2. 跟兄弟借，兄弟没得借
+            } else {
 
+            }
+        }
+        // 替代节点是红色，直接设置为黑色
+        setColor(x, BLACK);
     }
 
     private TNode get(K key) {
@@ -127,7 +139,7 @@ public class RBT<K extends Comparable<K>, V> {
         TNode root = this.root;
         if (root == null) {
             this.root = new TNode(null, key, value);
-            setColor(this.root, BLACk);
+            setColor(this.root, BLACK);
             return;
         }
         // 查找插入位置
@@ -184,8 +196,8 @@ public class RBT<K extends Comparable<K>, V> {
             if (parentOf(x) == parentOf(parentOf(x)).left) {
                 TNode uncle = rightOf(parentOf(parentOf(x)));
                 if (colorOf(uncle) == RED) { // 叔叔节点是红色，不用调整，只变色(因为当前节点是红色，RBT不允许出现连续两个红色节点，因此需要变色)
-                    setColor(parentOf(x), BLACk); // 父亲节点变为黑色
-                    setColor(uncle, BLACk); // 叔叔节点也变为黑色
+                    setColor(parentOf(x), BLACK); // 父亲节点变为黑色
+                    setColor(uncle, BLACK); // 叔叔节点也变为黑色
                     setColor(parentOf(parentOf(x)), RED); // 爷爷节点变为红色
                     // 变色后将这一部分视为红色节点，根据爷爷节点继续递归调整
                     x = parentOf(parentOf(x));
@@ -196,7 +208,7 @@ public class RBT<K extends Comparable<K>, V> {
                         rotateLeft(x);
                     }
                     // x父亲节点设置为黑色
-                    setColor(parentOf(x), BLACk);
+                    setColor(parentOf(x), BLACK);
                     // 爷爷节点设置为红色
                     setColor(parentOf(parentOf(x)), RED);
                     // 根据爷爷节点进行右旋
@@ -205,8 +217,8 @@ public class RBT<K extends Comparable<K>, V> {
             } else {
                 TNode uncle = leftOf(parentOf(parentOf(x)));
                 if (colorOf(uncle) == RED) { // 叔叔节点是红色，不用调整，只变色(因为当前节点是红色，RBT不允许出现连续两个红色节点，因此需要变色)
-                    setColor(parentOf(x), BLACk); // 父亲节点变为黑色
-                    setColor(uncle, BLACk); // 叔叔节点也变为黑色
+                    setColor(parentOf(x), BLACK); // 父亲节点变为黑色
+                    setColor(uncle, BLACK); // 叔叔节点也变为黑色
                     setColor(parentOf(parentOf(x)), RED); // 爷爷节点变为红色
                     // 变色后将这一部分视为红色节点，根据爷爷节点继续递归调整
                     x = parentOf(parentOf(x));
@@ -217,7 +229,7 @@ public class RBT<K extends Comparable<K>, V> {
                         rotateRight(x);
                     }
                     // x父亲节点设置为黑色
-                    setColor(parentOf(x), BLACk);
+                    setColor(parentOf(x), BLACK);
                     // 爷爷节点设置为红色
                     setColor(parentOf(parentOf(x)), RED);
                     // 根据爷爷节点进行右旋
@@ -227,7 +239,7 @@ public class RBT<K extends Comparable<K>, V> {
         }
 
         // 根节点设置为黑色
-        setColor(root, BLACk);
+        setColor(root, BLACK);
     }
 
     /**
@@ -286,7 +298,7 @@ public class RBT<K extends Comparable<K>, V> {
      * @return
      */
     private static boolean colorOf(TNode node) {
-        return node == null ? BLACk : node.color;
+        return node == null ? BLACK : node.color;
     }
 
     private static TNode parentOf(TNode node) {
