@@ -29,7 +29,7 @@ public class AppApi {
 
         // 注册中心配置
         RegistryConfig registryConfig = new RegistryConfig();
-        registryConfig.setAddress("101.35.19.88:2180,101.35.19.88:2181,101.35.19.88:2182");
+        registryConfig.setAddress("ip:2180,ip:2181,ip:2182");
         registryConfig.setGroup("zk_dubbo");
         registryConfig.setVersion("*");
         registryConfig.setProtocol("zookeeper");

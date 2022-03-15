@@ -60,12 +60,12 @@ public class RedisClusterUtil {
             config.setTestOnReturn(TEST_ON_RETURN);
 
             Set<HostAndPort> jedisClusterNode = new HashSet<HostAndPort>();
-            jedisClusterNode.add(new HostAndPort("101.35.19.88", 6380));
-            jedisClusterNode.add(new HostAndPort("101.35.19.88", 6381));
-            jedisClusterNode.add(new HostAndPort("101.35.19.88", 6382));
-            jedisClusterNode.add(new HostAndPort("101.35.19.88", 6383));
-            jedisClusterNode.add(new HostAndPort("101.35.19.88", 6384));
-            jedisClusterNode.add(new HostAndPort("101.35.19.88", 6385));
+            jedisClusterNode.add(new HostAndPort("ip", 6380));
+            jedisClusterNode.add(new HostAndPort("ip", 6381));
+            jedisClusterNode.add(new HostAndPort("ip", 6382));
+            jedisClusterNode.add(new HostAndPort("ip", 6383));
+            jedisClusterNode.add(new HostAndPort("ip", 6384));
+            jedisClusterNode.add(new HostAndPort("ip", 6385));
 
             jedis = new JedisCluster(jedisClusterNode, 10000, 10000, 5, AUTH, config);
         } catch (Exception e) {

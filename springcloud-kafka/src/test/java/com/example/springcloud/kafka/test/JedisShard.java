@@ -20,8 +20,8 @@ public class JedisShard {
         poolConfig.setTestOnReturn(false);
 
         //分片信息
-        JedisShardInfo shardInfo1 = new JedisShardInfo("101.35.19.88", 6382, 5000);
-        JedisShardInfo shardInfo2 = new JedisShardInfo("101.35.19.88", 6383, 5000);
+        JedisShardInfo shardInfo1 = new JedisShardInfo("ip", 6382, 5000);
+        JedisShardInfo shardInfo2 = new JedisShardInfo("ip", 6383, 5000);
 
         //根据分片信息创建连接池
         List<JedisShardInfo> infoList = Arrays.asList(shardInfo1, shardInfo2);
