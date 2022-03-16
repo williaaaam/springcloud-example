@@ -169,8 +169,8 @@ public class RBT<K extends Comparable<K>, V> {
         } else {
             parent.right = node;
         }
-
         // 平衡处理 旋转和调色
+        fixAfterInsert(node);
     }
 
     /**
@@ -202,11 +202,13 @@ public class RBT<K extends Comparable<K>, V> {
                     // 变色后将这一部分视为红色节点，根据爷爷节点继续递归调整
                     x = parentOf(parentOf(x));
                 } else { // 叔叔节点是黑色
+                    // 情况5：左右
                     if (x == rightOf(parentOf(x))) { // x是父亲节点的右节点
                         x = parentOf(x);
                         // 根据x的父亲节点进行右旋
                         rotateLeft(x);
                     }
+                    // 情况3：左左
                     // x父亲节点设置为黑色
                     setColor(parentOf(x), BLACK);
                     // 爷爷节点设置为红色
@@ -216,6 +218,7 @@ public class RBT<K extends Comparable<K>, V> {
                 }
             } else {
                 TNode uncle = leftOf(parentOf(parentOf(x)));
+                // 情况2 父亲节点和叔叔节点都是红色
                 if (colorOf(uncle) == RED) { // 叔叔节点是红色，不用调整，只变色(因为当前节点是红色，RBT不允许出现连续两个红色节点，因此需要变色)
                     setColor(parentOf(x), BLACK); // 父亲节点变为黑色
                     setColor(uncle, BLACK); // 叔叔节点也变为黑色
@@ -223,6 +226,7 @@ public class RBT<K extends Comparable<K>, V> {
                     // 变色后将这一部分视为红色节点，根据爷爷节点继续递归调整
                     x = parentOf(parentOf(x));
                 } else { // 叔叔节点是黑色
+                    // 情况6：右左
                     if (x == leftOf(parentOf(x))) { // x是父亲节点的右节点
                         x = parentOf(x);
                         // 根据x的父亲节点进行右旋
