@@ -13,32 +13,33 @@ dubbo:
   # 协议端口
   #port: 20882
   #    port: 8083
-  scan:
-    base-packages: com.example.springboot.dubbo.provider # 可以不用再使用@EnableDubbo注解
+#  scan:
+#    base-packages: com.example.springboot.dubbo.provider # 可以不用再使用@EnableDubbo注解
   protocols:
     protocol1:
-      id: rest
-      name: rest
-      port: 8083
-      host: 0.0.0.0
+      id: dubbo1
+      # 使用REST协议访问Dubbo服务
+      name: dubbo
+      port: 20881
+#      host: 0.0.0.0
       # REST协议默认选用Jetty Servlet容器,默认采用长连接
-      server: tomcat
+#      server: tomcat
       # 类似Java Web中的context path
-      contextpath: /api
-      threads: 100
+#      contextpath: /api
+#      threads: 100
       # 定义客户端调用此REST服务的最大超时时间
-      timeout: 2000
-      connections: 10
+#      timeout: 2000
+#      connections: 10
     protocol2:
       id: dubbo2
       name: dubbo
+      # Netty端口号
       port: 20883
-      host: 0.0.0.0
+#      host: 0.0.0.0
     protocol3:
       id: dubbo3
       name: dubbo
       port: 20884
-      host: 0.0.0.0
-
+#      host: 0.0.0.0
 
 
