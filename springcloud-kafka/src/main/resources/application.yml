@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+
+spring:
+  kafka:
+    bootstrap-servers:
+    producer: # 生产者
+      retries: 3
+      batch-size: 16384  # 16k
+      buffer-memory: 33554432 # 32M
+      acks: 1 # leader成功写入日志文件后返回ack
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer: # 消费者
+      group-id: default-group
+      enable-auto-commit: false # 手动提交
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      max-poll-records: 500
+    listener:
+
+      ack-mode: manual_immediate
+  redis:
+    host:

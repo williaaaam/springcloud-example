@@ -9,9 +9,9 @@
 
     <!-- 使用multicast广播注册中心暴露发现服务地址 -->
     <!--<dubbo:registry address="multicast://224.5.6.7:1234" />-->
-    <dubbo:registry group="zk_dubbo" version="*" protocol="zookeeper" address="101.35.19.88:2180,101.35.19.88:2181,101.35.19.88:2182" id="zk_registry" />
+    <dubbo:registry group="zk_dubbo" version="*" protocol="zookeeper" address="ip:2180,ip:2181,ip:2182" id="zk_registry" />
 
 
     <!-- 生成远程服务代理，可以和本地bean一样使用nameService,nameService代理对象会注入到IOC容器中 -->
-    <dubbo:reference id="nameService" interface="com.example.dubbo.interfaces.provider.IName" registry="zk_registry" />
+    <dubbo:reference id="nameService" interface="com.example.dubbo.interfaces.provider.IName" registry="zk_registry" timeout="10000"/>
 </beans>
