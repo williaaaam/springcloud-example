@@ -4,6 +4,7 @@ spring:
     name: springcloud-openfeign-provider
 server:
   port: 8001
+
 eureka:
   client:
     serviceUrl:

@@ -5,15 +5,26 @@ eureka:
   instance:
     hostname: localhost
   server:
+    # 关闭自我保护模式
     enable-self-preservation: false
   client:
+    # 单机版需要配置 register-with-eureka, fetch-registry
     # 代表是否向Eureka注册中心注册自己，Server本身不需要注册
     register-with-eureka: false
     # false表示自己为注册中心，不需要检索服务
+    # 是否从注册中心获取配置信息
     fetch-registry: false
     service-url:
+      # Eureka Client中的配置要和这个保持一致
+      # 所有Eureka Client注册地址
       # 不用默认的配置
       # 单机 defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    # 尽量向同一区域的 eureka 注册,默认为true
+    prefer-same-zone-eureka: true
+    region: cn-east-8
+    availability-zones:
+      cn-east-8: zone-1,zone-2
+
 
 

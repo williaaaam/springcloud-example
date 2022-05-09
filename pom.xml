@@ -76,7 +76,7 @@
     <modules>
         <module>springcloud-openfeign-client</module>
         <module>springcloud-openfeign-provider</module>
-        <module>springcloud-eureka-example</module>
+        <module>springcloud-eureka-server</module>
         <module>springcloud-transaction</module>
         <module>springcloud-sharding-jdbc</module>
         <module>springcloud-example</module>

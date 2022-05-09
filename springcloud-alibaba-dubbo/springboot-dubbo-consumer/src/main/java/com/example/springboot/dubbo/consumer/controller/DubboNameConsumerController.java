@@ -20,6 +20,7 @@ public class DubboNameConsumerController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DubboNameConsumerController.class);
     /**
+     * 默认协议 dubbo，默认端口20880
      * 1. 服务启动时订阅注册中心服务地址列表
      * 2. 生成IName提供者服务的代理对象
      * 3. url:服务消费者通过url直连服务提供者,这时注册中心失效,点对点连接

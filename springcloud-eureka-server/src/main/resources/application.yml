@@ -4,4 +4,3 @@ spring:
     name: springcloud-eureka-example
   profiles:
     active: local
-

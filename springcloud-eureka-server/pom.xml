@@ -9,12 +9,13 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>springcloud-eureka-example</artifactId>
+    <artifactId>springcloud-example-eureka-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springcloud-eureka-example</name>
-    <description>springcloud-eureka-example</description>
+    <description>springcloud-example-eureka-server</description>
 
     <dependencies>
+        <!--创建Eureka Server模块-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
